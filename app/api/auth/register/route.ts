@@ -47,7 +47,8 @@ export async function POST(request: Request) {
       { message: "アカウントが作成されました", userId: user.id },
       { status: 201 }
     );
-  } catch {
+  } catch (error) {
+    console.error("Register error:", error);
     return NextResponse.json(
       { error: "サーバーエラーが発生しました" },
       { status: 500 }
