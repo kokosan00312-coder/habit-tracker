@@ -48,13 +48,9 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error: unknown) {
-    const err = error as Error & { code?: string; meta?: unknown };
-    console.error("Register error:", err.message);
-    console.error("Register error code:", err.code);
-    console.error("Register error meta:", JSON.stringify(err.meta));
-    console.error("Register error stack:", err.stack);
+    console.error("Register error:", error);
     return NextResponse.json(
-      { error: "サーバーエラーが発生しました", detail: err.message },
+      { error: "サーバーエラーが発生しました" },
       { status: 500 }
     );
   }
